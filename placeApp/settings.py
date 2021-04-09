@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Add our new applications
+    'places.apps.PlacesConfig',
+    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +78,12 @@ WSGI_APPLICATION = 'placeApp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'my_db',
+        'USER' : 'rahul',
+        'PASSWORD' : 'admin',
+        'HOST' : '127.0.0.1',
+        'PORT' : '5432', 
     }
 }
 
