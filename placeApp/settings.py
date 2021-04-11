@@ -27,8 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG')
-GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
-GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
+# GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
+# GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
 
 ALLOWED_HOSTS = ['tp-placeapp.herokuapp.com', '127.0.0.1']
 
