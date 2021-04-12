@@ -89,10 +89,10 @@ WSGI_APPLICATION = 'placeApp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'my_db',
-        'USER' : 'rahul',
-        'PASSWORD' : 'admin',
-        'HOST' : '127.0.0.1',
+        'NAME': 'deg8evpm7r91es',
+        'USER' : 'rloauqweggbufh',
+        'PASSWORD' : '8a521e675afeb300701121243ba1224deffdf14ccd7e779ea09bb98c3976c7f5',
+        'HOST' : 'ec2-34-225-103-117.compute-1.amazonaws.com',
         'PORT' : '5432', 
     }
 }
