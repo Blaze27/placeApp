@@ -1,0 +1,14 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<h4>Add a new place:</h4>
+
+  <form  method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-outline-dark">Add Place</button>
+  </form>
+
+
+{% endblock %}
