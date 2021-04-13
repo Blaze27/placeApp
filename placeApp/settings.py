@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['tp-placeapp.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'leaflet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     # Add our new applications
     'places.apps.PlacesConfig',
     'django.contrib.gis',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -101,7 +103,7 @@ DATABASES = {
     }
 }
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
