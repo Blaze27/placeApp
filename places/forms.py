@@ -1,8 +1,9 @@
-from django import forms
+from django.contrib.gis import forms
 from .models import Place
 
-class PlaceForm(forms.ModelForm):
 
+
+class PlaceForm( forms.ModelForm):
     class Meta:
         model = Place
         fields = (
