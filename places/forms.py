@@ -3,14 +3,14 @@ from .models import Place
 
 
 
-class PlaceForm( forms.ModelForm):
+class PlaceForm(forms.ModelForm):
     class Meta:
         model = Place
         fields = (
-            'name',
-            'location', 
+            'name', 
             'description', 
             'address', 
             'city',
             'type_of_place',
+            'location',
             )
