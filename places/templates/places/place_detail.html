@@ -1,6 +1,12 @@
 {% extends "base_generic.html" %}
 
+
 {%block content%}
+
+{% load leaflet_tags %}
+{% leaflet_css %}
+{% leaflet_js %}
+
 <h1 class="text-center"> {{place.name}} </h1>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -44,7 +50,8 @@
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-success">Location</strong>
-          <p class="card-text mb-auto">{{place.location}}</p>
+          {% comment %} <p class="card-text mb-auto">{{place.location}}</p> {% endcomment %}
+          {% leaflet_map "main" callback="map_init" %}
         </div>
       </div>
     </div>
@@ -57,5 +64,19 @@
 <p>City : {{place.city}} </p>
 <p>Type of Place : {{place.type_of_place}}</p> 
 </div>
+
+{% comment %} Map Rendering {% endcomment %}
+
+<script type="text/javascript">
+    function map_init(map, options) {
+        // get point lat and lon
+        var lon = "{{ place.location.x }}";
+        var lat = "{{ place.location.y }}";
+
+        // zoom to point & add it to map
+        map.setView([lat, lon], 12);
+        L.marker([lat, lon]).addTo(map);
+    }
+</script>
 
 {%endblock%}
