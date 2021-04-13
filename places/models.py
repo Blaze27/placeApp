@@ -6,7 +6,7 @@ from django.urls import reverse
 
 class Place(models.Model):
     name = models.CharField(max_length=100)
-    location = PointField(srid=4326, blank=True, null=True)
+    location = PointField(default=None)
     description = models.TextField(max_length=3000)
     address = models.CharField(max_length=500)
     city = models.CharField(max_length=100)
