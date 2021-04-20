@@ -3,20 +3,20 @@ from django.http import HttpResponse
 from django.views import generic
 from .forms import PlaceForm
 from django.contrib import messages
-# Create your views here.
-
+from .filters import PlaceFilter
 from places.models import Place
+
+
+# Create your views here.
 
 def index(request):
     return render(request, 'index.html')
 
-def sortCity(request):
-    distinct_cities = Place.objects.distinct('city')
-    return render(request, 'places/sortcity.html', context={'distinct_cities' : distinct_cities})
 
-def all_place_in_city(request, cityname):
-    list_of_place = Place.objects.filter(city=cityname)
-    return render(request, 'places/sorted_by_city.html', context={'list_of_place' : list_of_place})
+def sortCity(request):
+    filter_based_on_city = PlaceFilter(request.GET, queryset=Place.objects.all())
+    return render(request, 'places/sortcity.html', {'filter' : filter_based_on_city})
+    
 
 
 
@@ -28,7 +28,7 @@ def add_place(request):
             x = form.save(commit=False)
             x.save()
             messages.success(request, 'Place added successfully.')
-            return redirect('index')
+            return redirect('places:index')
     else:
         form = PlaceForm()
     
