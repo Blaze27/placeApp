@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'places.apps.PlacesConfig',
     'django.contrib.gis',
     'crispy_forms',
+    'django_filters',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [
