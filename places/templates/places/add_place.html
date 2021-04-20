@@ -4,16 +4,20 @@
 
 {% block content %}
 
+{% load leaflet_tags %}
+{% comment %} {% leaflet_css %}
+{% leaflet_js %} {% endcomment %}
 
-<div class="container">
+{% leaflet_js plugins="forms" %}
+{% leaflet_css plugins="forms" %}
+
+<div class="container my-6 mx-6">
 <h4>Add a new place:</h4>
 
   <form  method="POST">
     {% csrf_token %}
     {{form|crispy}}
-    {% block media %}
-    {{ form.media }}
-    {% endblock %}
+    {% comment %} {% leaflet_map "main" callback="map_init" %} {% endcomment %}
     <div class="container text-center">
     <button type="submit" class="btn btn-outline-dark">Add Place</button>
     </div>
@@ -21,6 +25,19 @@
 
 </div>
 
+
 {% comment %} Map rendering {% endcomment %}
+
+{% comment %} <script type="text/javascript">
+    function map_init(map, options) {
+        // get point lat and lon
+        var lon = "{{ place.location.x }}";
+        var lat = "{{ place.location.y }}";
+
+        // zoom to point & add it to map
+        map.setView([lat, lon], 12);
+        L.marker([lat, lon]).addTo(map);
+    }
+</script> {% endcomment %}
 
 {% endblock %}
